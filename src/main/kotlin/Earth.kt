@@ -12,7 +12,7 @@ class Earth(private val api: EarthApiService, private val apiKey: String) {
         println("Longitude: ${response.id}")
         println("Dimensão: ${response.resource.dataset}")
         println("Data: ${response.resource.planet}")
-        println("Data: ${response.url}")
+        println("URL: ${response.url}")
         println("Versão do serviço: ${response.serviceVersion}")
     }
 }
