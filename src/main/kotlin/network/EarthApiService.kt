@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface EarthApiService {
-    @GET("planetary/earth/imagery")
+    @GET("earth/assets")
     suspend fun getEarthImage(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,

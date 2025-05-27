@@ -26,7 +26,7 @@ fun main() = runBlocking {
     val APIKEY = "FT0cPlNNwRv3T2t7qEiggP0fhBBYcLEDl9RWhMrn"
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.nasa.gov/")
+        .baseUrl("https://api.nasa.gov/planetary/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -39,37 +39,35 @@ fun main() = runBlocking {
     var continueProgram = true
     while (continueProgram) {
         try {
-//            println("Deseja consultar qual API?\n(1) APOD\n(2) Earth")
-//            val choice = readLine()?.toIntOrNull()
-//
-//            if (choice == null || (choice != 1 && choice != 2)) {
-//                println("Opção inválida. Por favor, escolha 1 ou 2.")
-//                continue
-//            }
-//
-//            when (choice) {
-//                1 -> {
+            println("Deseja consultar qual API?\n(1) APOD\n(2) Earth")
+            val choice = readLine()?.toIntOrNull()
 
-//                }
-//                2 -> {
-//                    println("Você escolheu a API Earth.\n")
-//                    val params = collectEarthParams()
-//                    if (params != null) {
-//                        val result = earthService.fetchData(
-//                            params["lat"] as Double,
-//                            params["lon"] as Double,
-//                            params["dim"] as Double?,
-//                            params["date"] as String?
-//                        )
-//                        earthService.displayResults(result)
-//                    }
-//                }
-//            }
+            if (choice == null || (choice != 1 && choice != 2)) {
+                println("Opção inválida. Por favor, escolha 1 ou 2.")
+                continue
+            }
 
-            println("API APOD - NASA.\n")
-            val params = collectApodParams()
-            val result = apodService.fetchData(params)
-            apodService.displayResults(result)
+            when (choice) {
+                1 -> {
+                    println("API APOD - NASA.\n")
+                    val params = collectApodParams()
+                    val result = apodService.fetchData(params)
+                    apodService.displayResults(result)
+                }
+                2 -> {
+                    println("Você escolheu a API Earth.\n")
+                    val params = collectEarthParams()
+                    if (params != null) {
+                        val result = earthService.fetchData(
+                            params["lat"] as Double,
+                            params["lon"] as Double,
+                            params["dim"] as Double?,
+                            params["date"] as String?
+                        )
+                        earthService.displayResults(result)
+                    }
+                }
+            }
 
             println("\n-----")
             println("Deseja efetuar novas consultas? (Y/N)")

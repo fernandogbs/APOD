@@ -24,7 +24,7 @@ class Apod(private val api: ApodApiService, private val apiKey: String) {
             println("date: ${it.date}")
             println("Titulo: ${it.title}")
             println("Explicação: ${it.explanation}")
-            println("HD URL: ${it.hdurl ?: "N/A"}")
+            println("HD URL: ${it.hdUrl}")
             println("URL: ${it.url}")
             println("Tipo de arquivo: ${if (it.mediaType == null) "N/A" else it.mediaType}")
             println("Versão do serviço: ${if (it.serviceVersion == null) "N/A" else it.serviceVersion}")

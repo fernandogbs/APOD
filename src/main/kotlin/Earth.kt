@@ -8,9 +8,11 @@ class Earth(private val api: EarthApiService, private val apiKey: String) {
 
     fun displayResults(response: EarthResponse) {
         println("\n-----")
-        println("Latitude: ${response.lat}")
-        println("Longitude: ${response.lon}")
-        println("Dimensão: ${response.dim}")
-        println("Data: ${response.date}")
+        println("Latitude: ${response.date}")
+        println("Longitude: ${response.id}")
+        println("Dimensão: ${response.resource.dataset}")
+        println("Data: ${response.resource.planet}")
+        println("Data: ${response.url}")
+        println("Versão do serviço: ${response.serviceVersion}")
     }
 }
