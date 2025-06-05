@@ -50,14 +50,14 @@ fun main() = runBlocking {
 }
 
 fun pedirParametros(): Map<String, Any?> {
-    val params = mutableMapOf<String, Any?>()
+    val parametros = mutableMapOf<String, Any?>()
 
     println("Digite a data (DD/MM/AAAA) ou deixe em branco para outras opções:")
     val data = readLine()?.trim().orEmpty()
 
     if (data.isNotEmpty()) {
-        formatarData(data)?.let { params["date"] = it }
-        return params
+        formatarData(data)?.let { parametros["date"] = it }
+        return parametros
     }
 
     println("Deseja buscar por período? (Y/N):")
@@ -66,12 +66,12 @@ fun pedirParametros(): Map<String, Any?> {
         val inicio = readLine()?.trim().orEmpty()
         println("Data final (opcional):")
         val fim = readLine()?.trim().orEmpty()
-        formatarData(inicio)?.let { params["startDate"] = it }
-        formatarData(fim)?.let { if (fim.isNotEmpty()) params["endDate"] = it }
+        formatarData(inicio)?.let { parametros["startDate"] = it }
+        formatarData(fim)?.let { if (fim.isNotEmpty()) parametros["endDate"] = it }
     } else {
         println("Quantas imagens deseja? (opcional):")
-        readLine()?.toIntOrNull()?.let { params["count"] = it }
+        readLine()?.toIntOrNull()?.let { parametros["count"] = it }
     }
 
-    return params
+    return parametros
 }
